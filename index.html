@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Class Average Calculator</title>
+  <style>
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Class Average Calculator</h1>
+    <label for="scoresInput">Enter student scores (comma-separated): </label>
+    <input type="text" id="scoresInput" placeholder="85, 90, 75, 92, 88">
+    <button onclick="calculateAndDisplay()">Calculate Average</button>
+    <p id="result">The class average will be displayed here.</p>
+  </div>
+  <script>
+// Function to calculate and display the class average
+function calculateAndDisplay() {
+  // Get the input value from the 'scoresInput' element
+  var scoresInput = document.getElementById("scoresInput").value;
+
+  // Split the input string into an array using ',' as a delimiter, then convert each element to a number
+  var studentScores = scoresInput.split(',').map(Number);
+
+  // Call the calculateAverage function to find the average of student scores
+  var classAverage = calculateAverage(studentScores);
+
+  // Get the result element by its ID
+  var resultElement = document.getElementById("result");
+
+  // Display the calculated class average in the result element with two decimal places
+  resultElement.textContent = "The class average is: " + classAverage.toFixed(2);
+}
+
+// Function to calculate the average of an array of scores
+function calculateAverage(scores) {
+  // Initialize a variable to store the sum of all scores
+  var total = 0;
+
+  // Loop through each score in the array
+  for (var i = 0; i < scores.length; i++) {
+    // Add the current score to the total
+    total += scores[i];
+  }
+
+  // Calculate the average by dividing the total by the number of scores
+  var average = total / scores.length;
+
+  // Return the calculated average
+  return average;
+}
+
+</script>
+</body>
+
+</html>
